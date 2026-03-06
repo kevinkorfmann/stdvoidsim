@@ -63,6 +63,33 @@ Every species has exactly two models (one single-population, one multi-populatio
 yielding 80 demographic models total.
 
 
+Prior sampling
+--------------
+
+Each species has **prior distributions** over its four key parameters
+(generation time, Ne, mutation rate, recombination rate).
+
+- **Extreme species** (9 species: Azathoth, Yog-Sothoth, Cthulhu, etc.)
+  use LogUniform priors spanning [0.01v, 100v] — four orders of magnitude.
+- **Non-extreme species** (31 species) use LogNormal priors with adaptive
+  σ: wider (σ=0.8) for unusual generation times (>100 yr) or small Ne (<5000),
+  narrower (σ=0.5) otherwise.
+
+Usage::
+
+    import stdvoidsim
+    import numpy as np
+
+    prior = stdvoidsim.get_prior("DagHyd")
+    rng = np.random.default_rng(42)
+
+    # Single draw
+    params = prior.sample(rng)
+
+    # Generate 1000 parameter sets
+    params = prior.sample(rng, size=1000)
+
+
 First steps
 -----------
 

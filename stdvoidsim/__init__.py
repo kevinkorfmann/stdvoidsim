@@ -24,6 +24,8 @@ from .warning_categories import *  # NOQA
 # defined are not part of the external API.
 from .catalog import *  # NOQA
 
+from .priors import get_prior  # NOQA
+
 from . import qc  # NOQA
 
 from .selection import *  # NOQA
