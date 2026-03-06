@@ -20,15 +20,15 @@ of identifiability under extreme demographic scenarios.
 Species span deliberately non-standard parameter ranges designed to break
 methods that only work in "well-behaved" regimes:
 
-- **Generation time:** 0.01 years (Fire Vampires) to 10^6 years (Azathoth) ---
+- **Generation time:** 0.01 years (Fire Vampires) to 10^6 years (Azathoth) -
   8 orders of magnitude.
 - **Effective population size:** Ne = 1 (Azathoth) to Ne = 10^6 (Fire Vampires, Zoogs).
 - **Ploidy:** diploid to hexaploid (Shoggoth).
 - **Scenarios:** extreme bottlenecks, deep dormancy, asymmetric migration.
 
-See also: `stdgrimmsim <https://github.com/kevinkorfmann/stdgrimmsim>`_ --- the
+See also: `stdgrimmsim <https://github.com/kevinkorfmann/stdgrimmsim>`_ - the
 companion catalog for ML training with plausible German-folklore demographies
-(32 species, 134 models across 4 complexity levels).
+(32 species, 150 models across 4 complexity levels).
 
 
 Species categories
@@ -60,7 +60,7 @@ The 40 species are grouped into Mythos-inspired categories:
 - **Human-Adjacent Horrors** (2 species): Tcho-Tcho, Rat-Things.
 
 Every species has exactly two models (one single-population, one multi-population),
-yielding 82 demographic models total.
+yielding 80 demographic models total.
 
 
 First steps
@@ -69,7 +69,7 @@ First steps
  - Head to the :ref:`Installation <sec_installation>` page to get ``stdvoidsim``
    installed on your computer.
 
- - Skim the :ref:`Catalog <sec_catalog>` to see all 40 species and 82 demographic
+ - Skim the :ref:`Catalog <sec_catalog>` to see all 40 species and 80 demographic
    models.
 
  - Read the :ref:`Tutorials <sec_tutorial>` to see some examples of ``stdvoidsim``

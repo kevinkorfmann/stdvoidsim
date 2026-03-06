@@ -12,7 +12,7 @@
 A community-maintained library of population genetic simulation models for
 **Lovecraftian entities and eldritch horrors**.
 
-**40 species · 82 demographic models** spanning extreme parameter space.
+**40 species · 80 demographic models** spanning extreme parameter space.
 
 > See also: [**stdgrimmsim**](https://github.com/kevinkorfmann/stdgrimmsim) — the companion catalog for ML training with plausible German-folklore demographies.
 
@@ -33,7 +33,7 @@ Species span deliberately non-standard parameter ranges designed to break method
 |---|---|---|
 | **Focus** | Stress-testing & identifiability limits | Diverse training data & benchmarking |
 | **Species** | 40 (Cthulhu Mythos) | 32 (German folklore) |
-| **Models** | 82 (1- and 2-population) | 134 (1- to 4-population) |
+| **Models** | 80 (1- and 2-population) | 150 (1- to 4-population) |
 | **Parameter range** | Extreme (Ne=1 to 10^6, gen. time 0.01–10^6 yr) | Moderate, plausible |
 | **Ploidy** | Diploid to hexaploid | All diploid |
 
