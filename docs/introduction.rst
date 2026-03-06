@@ -7,28 +7,73 @@ Introduction
 This is the documentation for ``stdvoidsim``, a library of population
 genetic simulation models for Lovecraftian entities and eldritch horrors.
 
-``stdvoidsim`` is a fork of ``stdpopsim`` that replaces real-world species with
-40 fictional creatures from H.P. Lovecraft's Cthulhu Mythos. Each species has
-made-up but population-genetically plausible genomes and demographic models
-suitable for testing inference methods on non-standard scenarios.
+Purpose
+-------
 
-Under the hood, ``stdvoidsim`` relies on
-`msprime <https://tskit.dev/software/msprime.html>`_ and
-`SLiM 4 <https://messerlab.org/slim/>`_ to generate sample datasets in the
-`tree sequence <https://tskit.dev/learn/>`_ format.
+``stdvoidsim`` is a *fork catalog* of ``stdpopsim``: it shares the same API and
+simulation engines but replaces the species catalog with 40 fictional creatures
+from H.P. Lovecraft's Cthulhu Mythos.
+
+**Primary use case:** stress-testing inference methods and probing the limits
+of identifiability under extreme demographic scenarios.
+
+Species span deliberately non-standard parameter ranges designed to break
+methods that only work in "well-behaved" regimes:
+
+- **Generation time:** 0.01 years (Fire Vampires) to 10^6 years (Azathoth) -
+  8 orders of magnitude.
+- **Effective population size:** Ne = 1 (Azathoth) to Ne = 10^6 (Fire Vampires, Zoogs).
+- **Ploidy:** diploid to hexaploid (Shoggoth).
+- **Scenarios:** extreme bottlenecks, deep dormancy, asymmetric migration.
+
+See also: `stdgrimmsim <https://github.com/kevinkorfmann/stdgrimmsim>`_ - the
+companion catalog for ML training with plausible German-folklore demographies
+(32 species, 150 models across 4 complexity levels).
+
+
+Species categories
+------------------
+
+The 40 species are grouped into Mythos-inspired categories:
+
+- **Outer Gods & Great Old Ones** (9 species): Azathoth, Cthulhu, Father Dagon,
+  Hastur, Nyarlathotep, Shub-Niggurath, Tsathoggua, Yog-Sothoth, Chaugnar Faugn.
+
+- **Servitor Races & Engineered Species** (7 species): Shoggoth, Star-Spawn,
+  Dark Young, Formless Spawn, Hunting Horror, Fire Vampire, Byakhee.
+
+- **Ancient Civilizations** (5 species): Elder Things, Great Race of Yith,
+  Flying Polyps, Mi-Go, Serpent People.
+
+- **Amphibious & Aquatic** (2 species): Deep Ones, Colour Out of Space.
+
+- **Subterranean Horrors** (5 species): Ghouls, Gugs, Ghasts, Dholes, Wamps.
+
+- **Dreamlands Creatures** (6 species): Nightgaunts, Shantaks, Moon-Beasts,
+  Zoogs, Cats of Ulthar, Leng Spiders.
+
+- **Interdimensional & Temporal** (2 species): Hounds of Tindalos,
+  Dimensional Shamblers.
+
+- **Arctic & Desert** (2 species): Gnoph-Keh, Sand Dwellers.
+
+- **Human-Adjacent Horrors** (2 species): Tcho-Tcho, Rat-Things.
+
+Every species has exactly two models (one single-population, one multi-population),
+yielding 80 demographic models total.
 
 
 First steps
 -----------
 
- - Head to the :ref:`Installation <sec_installation>` page to get ``stdvoidsim`` installed
-   on your computer.
+ - Head to the :ref:`Installation <sec_installation>` page to get ``stdvoidsim``
+   installed on your computer.
 
- - Skim the :ref:`Catalog <sec_catalog>` to see what eldritch simulations are currently
-   supported by ``stdvoidsim``.
+ - Skim the :ref:`Catalog <sec_catalog>` to see all 40 species and 80 demographic
+   models.
 
- - Read the :ref:`Tutorials <sec_tutorial>` to see some examples of ``stdvoidsim`` in
-   action.
+ - Read the :ref:`Tutorials <sec_tutorial>` to see some examples of ``stdvoidsim``
+   in action.
 
 
 Citations
@@ -42,7 +87,7 @@ framework, please cite:
     eLife 9:e54967; doi: https://doi.org/10.7554/eLife.54967
 
   - M Elise Lauterbur et al. (2023),
-    *Expanding the stdvoidsim species catalog, and lessons learned for realistic genome simulations*,
+    *Expanding the stdpopsim species catalog, and lessons learned for realistic genome simulations*,
     eLife 12:RP84874; doi: https://doi.org/10.7554/eLife.84874
 
 

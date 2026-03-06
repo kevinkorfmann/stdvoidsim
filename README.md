@@ -12,18 +12,36 @@
 A community-maintained library of population genetic simulation models for
 **Lovecraftian entities and eldritch horrors**.
 
-Built on the [stdvoidsim](https://github.com/popsim-consortium/stdvoidsim) framework,
-`stdvoidsim` provides fictional but population-genetically plausible demographic models
-for creatures from H.P. Lovecraft's Cthulhu Mythos. All models use realistic population
-genetic parameters and are fully simulatable with `msprime` and `SLiM`.
+**40 species · 80 demographic models** spanning extreme parameter space.
 
-**40 species, 80 demographic models.**
+> See also: [**stdgrimmsim**](https://github.com/kevinkorfmann/stdgrimmsim) — the companion catalog for ML training with plausible German-folklore demographies.
+
+## Purpose
+
+`stdvoidsim` is a *fork catalog* of [stdpopsim](https://stdpopsim.org): it shares the same API and simulation engines (msprime, SLiM) but replaces the species catalog with fictional taxa from H.P. Lovecraft's Cthulhu Mythos.
+
+**Primary use case: stress-testing inference methods** and probing the limits of identifiability under extreme demographic scenarios.
+
+Species span deliberately non-standard parameter ranges designed to break methods that only work in "well-behaved" regimes:
+
+- **Generation time:** 0.01 years (Fire Vampires) to 10^6 years (Azathoth) — 8 orders of magnitude
+- **Effective population size:** Ne = 1 (Azathoth) to Ne = 10^6 (Fire Vampires, Zoogs)
+- **Ploidy:** diploid to hexaploid (Shoggoth)
+- **Scenarios:** extreme bottlenecks, deep dormancy, asymmetric migration
+
+| | stdvoidsim | stdgrimmsim |
+|---|---|---|
+| **Focus** | Stress-testing & identifiability limits | Diverse training data & benchmarking |
+| **Species** | 40 (Cthulhu Mythos) | 32 (German folklore) |
+| **Models** | 80 (1- and 2-population) | 150 (1- to 4-population) |
+| **Parameter range** | Extreme (Ne=1 to 10^6, gen. time 0.01–10^6 yr) | Moderate, plausible |
+| **Ploidy** | Diploid to hexaploid | All diploid |
 
 ## Available Species
 
 ### Outer Gods & Great Old Ones
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | AzaPri | *Azathoth primordia* | Blind Idiot God | 1 | 1M yr | 2 |
 | CthGre | *Cthulhu greatoldone* | Great Cthulhu | 500 | 10K yr | 4 |
@@ -37,19 +55,19 @@ genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
 ### Servitor Races & Engineered Species
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | ShoNig | *Shoggoth nigrumplasma* | Shoggoth | 100,000 | 0.5 yr | 6 |
 | StarSp | *Starspawn cthulhidae* | Star-Spawn of Cthulhu | 10,000 | 5K yr | 4 |
 | DarYou | *Obscurus silvanus* | Dark Young | 35,000 | 50 yr | 3 |
 | ForSpa | *Informis generatus* | Formless Spawn | 25,000 | 10 yr | 2 |
 | HunTin | *Venator obscurus* | Hunting Horror | 15,000 | 20 yr | 2 |
-| FirVam | *Igneus vampirus* | Fire Vampire | 1M | 0.01 yr | 1 |
+| FirVam | *Igneus vampirus* | Fire Vampire | 1,000,000 | 0.01 yr | 1 |
 | BybWor | *Byakhee voidwing* | Byakhee | 200,000 | 10 yr | 2 |
 
 ### Ancient Civilizations
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | EldThi | *Elderium antarcticae* | Elder Thing | 10,000 | 1K yr | 2 |
 | YitGre | *Yithianus temporalis* | Great Race of Yith | 50,000 | 500 yr | 2 |
@@ -59,14 +77,14 @@ genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
 ### Amphibious & Aquatic
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | DagHyd | *Dagonus hydridae* | Deep One | 50,000 | 100 yr | 2 |
 | ColOos | *Chromatis extraspatiala* | Colour Out of Space | 10,000 | 0.1 yr | 1 |
 
 ### Subterranean Horrors
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | GhoFee | *Ghoulish necrophagus* | Ghoul | 30,000 | 20 yr | 2 |
 | GugsUn | *Gugus underworldis* | Gug | 25,000 | 30 yr | 2 |
@@ -76,7 +94,7 @@ genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
 ### Dreamlands Creatures
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | NigMan | *Nightgauntus mantaformis* | Nightgaunt | 75,000 | 5 yr | 2 |
 | SanDre | *Shantakus dreamlandis* | Shantak | 60,000 | 15 yr | 2 |
@@ -87,21 +105,21 @@ genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 
 ### Interdimensional & Temporal
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | HouFir | *Houndus tindalosi* | Hound of Tindalos | 5,000 | 500 yr | 2 |
 | DimSha | *Dimensius shambleris* | Dimensional Shambler | 3,000 | 100 yr | 2 |
 
 ### Arctic & Desert
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | GnpKeh | *Gnophkehus arcticus* | Gnoph-Keh | 12,000 | 40 yr | 2 |
 | SanDwl | *Arenicola abyssalis* | Sand Dweller | 40,000 | 15 yr | 2 |
 
 ### Human-Adjacent Horrors
 
-| ID | Species | Common Name | Pop Size | Gen Time | Ploidy |
+| ID | Species | Common Name | Ne | Gen Time | Ploidy |
 |--------|-------------------------------|--------------------------|----------|----------|--------|
 | TsaCho | *Tsathoggua choriensis* | Tcho-Tcho | 70,000 | 25 yr | 2 |
 | RatThi | *Rattus magicus* | Rat-Thing | 50,000 | 1 yr | 2 |
@@ -111,18 +129,18 @@ genetic parameters and are fully simulatable with `msprime` and `SLiM`.
 ```python
 import stdvoidsim
 
-# Get the Shoggoth species (hexaploid engineered servitors)
-species = stdvoidsim.get_species("ShoNig")
+# Get the Deep One species
+species = stdvoidsim.get_species("DagHyd")
 
-# Use the Antarctic Revolt demographic model
-model = species.get_demographic_model("AntarcticRevolt_1D31")
+# Use the Innsmouth Decline demographic model (3-epoch history)
+model = species.get_demographic_model("InnsmouthDecline_1M27")
 
 # Set up a generic contig of 100kb
 contig = species.get_contig(length=100_000)
 
 # Simulate with msprime
 engine = stdvoidsim.get_engine("msprime")
-ts = engine.simulate(model, contig, samples={"Antarctic": 20}, seed=42)
+ts = engine.simulate(model, contig, samples={"DeepOnes": 20}, seed=42)
 
 print(f"Trees: {ts.num_trees}, Mutations: {ts.num_mutations}")
 ```
@@ -133,16 +151,17 @@ print(f"Trees: {ts.num_trees}, Mutations: {ts.num_mutations}")
 # List all available species
 stdvoidsim --help
 
-# Simulate 10 Deep One samples under the Innsmouth Decline model
+# Deep Ones: 3-epoch decline-then-expansion
 stdvoidsim DagHyd -d InnsmouthDecline_1M27 -o deep_ones.trees -L 100000 DeepOnes:10
 
-# Simulate Shoggoth rebellion scenario
+# Shoggoth: 4-epoch revolt history (hexaploid, 0.5-yr generation time)
 stdvoidsim ShoNig -d AntarcticRevolt_1D31 -o shoggoths.trees -L 50000 Shoggoth:20
+
+# Cthulhu: deep dormancy (10,000-yr generation time)
+stdvoidsim CthGre -d DeepSlumber_1R28 -o cthulhu.trees -L 50000 Rlyeh:5
 ```
 
 ## Installation
-
-From PyPI (once published):
 
 ```bash
 pip install stdvoidsim
@@ -156,58 +175,26 @@ pip install -e .
 
 ### SLiM engine (optional)
 
-To run simulations with the **SLiM** engine instead of msprime, install [SLiM](https://messerlab.org/slim/) and ensure `slim` is on your `PATH`. Use **SLiM 3.x** (e.g. 3.7); the generated scripts target the SLiM 3 API. SLiM 4.x changed the API (e.g. `initializeSex()`); the engine may need updates for full SLiM 4 support. The SLiM engine supports **ploidy 1 or 2 only**; species with higher ploidy (e.g. Cthulhu 4, Shoggoth 6) must be simulated with the msprime engine.
+SLiM supports ploidy 1 or 2 only. Species with higher ploidy (e.g. Cthulhu ploidy 4, Shoggoth ploidy 6) must use msprime.
 
 ```bash
-# Example: Deep Ones with SLiM (diploid)
 stdvoidsim DagHyd -d InnsmouthDecline_1M27 -e slim -o deep_ones.trees -L 10000 DeepOnes:10
 ```
 
 ### Development with uv
 
-[uv](https://github.com/astral-sh/uv) makes installing and running tests fast. Install uv (`pip install uv` or `brew install uv`), then from the repo root:
-
 ```bash
 make install    # editable install + dev/CI dependencies
 make test       # run test suite
 make test-cov   # run tests with coverage
-make quick-sim  # run quick simulation check (.test/run_simulation.py)
+make quick-sim  # run quick simulation check
 ```
-
-Or without Make: `uv pip install -e .`, `uv pip install -r requirements/CI/requirements.txt`, then `uv run pytest -v tests`.
-
-### Releasing to PyPI
-
-The package uses [setuptools_scm](https://github.com/pypa/setuptools_scm) for versioning; the version is read from git tags. To publish a release to PyPI:
-
-1. **One-time:** Create a PyPI account and an API token at [pypi.org/manage/account/token/](https://pypi.org/manage/account/token/). Add the token as repository secret `PYPI_API_TOKEN` in GitHub (Settings → Secrets and variables → Actions).
-2. **Each release:** Tag the commit with a semantic version and push. The GitHub Action will build and upload to PyPI:
-   ```bash
-   git tag v0.1.0
-   git push origin v0.1.0
-   ```
-   Use a new tag for each release (e.g. `v0.1.1`, `v0.2.0`). To test without publishing, use [Test PyPI](https://test.pypi.org/) and set `TWINE_REPOSITORY_URL` in the workflow or run `twine upload --repository-url https://test.pypi.org/legacy/ dist/*` locally.
-
-## Design Philosophy
-
-Each species has:
-- **Made-up but internally consistent genome**: chromosome counts, lengths, ploidy,
-  mutation rates, and recombination rates chosen to reflect the creature's biology
-- **Demographic models**: population size changes, bottlenecks, splits, and migrations
-  that tell a story consistent with the Mythos lore
-- **Simulatable parameters**: all values are chosen so that simulations complete in
-  reasonable time and produce meaningful coalescent trees
-
-The models are designed to be useful for testing population genetic inference methods
-on non-standard demographic scenarios (extreme bottlenecks, very small populations,
-polyploidy, highly asymmetric migration, etc.).
 
 ## Citation
 
-This project is a fork of [stdvoidsim](https://github.com/popsim-consortium/stdvoidsim).
-If you use the simulation framework, please cite:
+This project is a fork of [stdpopsim](https://stdpopsim.org). If you use the simulation framework, please cite:
 
-* [Adrion, et al. (2020)](https://doi.org/10.7554/eLife.54967)
-* [Lauterbur, et al. (2023)](https://doi.org/10.7554/eLife.84874)
+* [Adrion, et al. (2020)](https://doi.org/10.7554/eLife.54967) — A community-maintained standard library of population genetic models.
+* [Lauterbur, et al. (2023)](https://doi.org/10.7554/eLife.84874) — Expanding the stdpopsim species catalog.
 
 *"Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn."*
